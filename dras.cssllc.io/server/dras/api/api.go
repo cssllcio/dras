@@ -146,7 +146,7 @@ func getAllEntities(tableName string) gin.HandlerFunc {
 		jsonResult, err := json.Marshal(results)
 		if err != nil {
 			c.AbortWithStatus(404)
-			c.Error(err)
+			_ = c.Error(err)
 			return
 		}
 		c.JSON(200, string(jsonResult))
@@ -161,7 +161,7 @@ func getEntity(tableName string) gin.HandlerFunc {
 		jsonResult, err := json.Marshal(results[0])
 		if err != nil {
 			c.AbortWithStatus(404)
-			c.Error(err)
+			_ = c.Error(err)
 			return
 		}
 		c.JSON(200, string(jsonResult))

@@ -37,7 +37,7 @@ func InitDB(dialect, hostname, name string, dbPort int, user, password string) (
 func GetTables() ([]Table, error) {
 	var tables []Table
 	if dbConn == nil {
-		errors.New("dbConn is nil")
+		return nil, errors.New("dbConn is nil")
 	}
 	err := dbConn.Raw("SELECT table_name  FROM information_schema.tables WHERE table_schema = 'public'").Scan(&tables).Error
 	return tables, err
